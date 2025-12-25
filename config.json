@@ -1,0 +1,15 @@
+{
+    "app": {
+      "browser": "safari_ios",
+      "timeout": 10,
+      "retries": 1,
+      "delay": 5,
+      "use_proxy": true
+    },
+    "generation": {
+      "min": 2,
+      "max": 3,
+      "digits": true,
+      "count": "max"
+    }
+  }

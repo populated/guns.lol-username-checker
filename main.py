@@ -90,8 +90,8 @@ class Logger:
                 }
             )
         )
-        self.min_level = self.LEVELS.get(level.upper(), 20)
-        self.start = time.time()
+        self.min_level: int = self.LEVELS.get(level.upper(), 20)
+        self.start: float = time.time()
 
     def _fmt(self, level: str, message: str) -> Text:
         ts = Text(f"[{time.strftime('%H:%M:%S.%f')[:-3]}]", style="timestamp")
@@ -131,7 +131,8 @@ class ProxyPool:
 
     def __init__(self, path: str = "proxies.txt") -> None:
         self.raw: List[str] = []
-        self.idx = 0
+        self.idx: int = 0
+        
         self._load(path)
 
     def _load(self, path: str) -> None:
@@ -262,12 +263,12 @@ class Checker:
         if not (h1 := soup.find("h1")):
             return Status.TAKEN
 
-        h1_text = h1.get_text(strip=True)
+        h1 = h1.get_text(strip=True)
 
-        if self.BAN in h1_text:
+        if self.BAN in h1:
             return Status.BANNED
 
-        if self.AVAILABLE in h1_text:
+        if self.AVAILABLE in h1:
             h3 = soup.find("h3")
             
             if h3 and "Claim this username" in h3.get_text(strip=True):
